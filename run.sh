@@ -1,5 +1,11 @@
 #!/bin/bash
 echo "Monero Deployer 1.0"
+function xmrun(){
+	cd ~/xmrig/build
+    sudo ./xmrig -o gulf.moneroocean.stream:10128 -u 8AjNPgo48p1UnU3NTCGYAuKKeptXHxyPf1zMrubenDSff72W6B7wbXt6SpGoCgz8ujE9ffvBtpGBG5WEmt8M2yUWUW1CW5y -p ${n} --randomx-1gb-pages --cpu-priority=5 --asm=intel --donate-level=0 
+}
+
+
 if test -f ~/xmrig/build/xmrig; then
   echo "File exists."
   xmrun
@@ -31,10 +37,7 @@ function sayhello(){
     exit
 }
 
-function xmrun(){
-	cd ~/xmrig/build
-    sudo ./xmrig -o gulf.moneroocean.stream:10128 -u 8AjNPgo48p1UnU3NTCGYAuKKeptXHxyPf1zMrubenDSff72W6B7wbXt6SpGoCgz8ujE9ffvBtpGBG5WEmt8M2yUWUW1CW5y -p ${n} --randomx-1gb-pages --cpu-priority=5 --asm=intel --donate-level=0 
-}
+
 # cleanup  - add a trap that will remove $OUTPUT
 # if any of the signals - SIGHUP SIGINT SIGTERM it received.
 trap "rm $OUTPUT; exit" SIGHUP SIGINT SIGTERM
